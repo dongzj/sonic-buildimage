@@ -26,6 +26,8 @@ jobs:
           sudo pip3 install j2cli
       - name: make init
         run: make init
+      - name: make configure
+        run: make configure PLATFORM=broadcom
       - name: make target
         run: make target/sonic-broadcom.bin
       - name: upload artifacts
