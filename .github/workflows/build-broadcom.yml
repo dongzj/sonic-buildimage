@@ -28,8 +28,12 @@ jobs:
         run: make init
       - name: make configure
         run: make configure PLATFORM=broadcom
-      - name: make target
+      - name: build debian buster required targets
+        run: BLDENV=buster make buster
+      - name: build ONIE image
         run: make target/sonic-broadcom.bin
+      - name: build EOS image
+        run: make target/sonic-aboot-broadcom.swi
       - name: upload artifacts
         uses: actions/upload-artifact@v2
         with:
