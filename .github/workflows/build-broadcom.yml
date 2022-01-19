@@ -27,7 +27,7 @@ jobs:
       - name: make init
         run: make init
       - name: make configure
-        run: make configure PLATFORM=broadcom
+        run: NOSTRETCH=1 NOBULLSEYE=1 make configure PLATFORM=broadcom
       - name: build debian buster required targets
         run: BLDENV=buster make buster
       - name: build ONIE image
