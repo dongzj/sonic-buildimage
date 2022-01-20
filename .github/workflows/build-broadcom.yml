@@ -28,6 +28,7 @@ jobs:
           export NOBUSTER=1 
           export SONIC_CONFIG_BUILD_JOBS=4
           export SONIC_CONFIG_USE_NATIVE_DOCKERD_FOR_BUILD=y
+          export DEFAULT_KERNEL_PROCURE_METHOD=download
       - name: make init
         run: make init
       - name: make configure
