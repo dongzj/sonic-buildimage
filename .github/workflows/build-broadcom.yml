@@ -24,12 +24,14 @@ jobs:
         run: |
           sudo apt install -y python3-pip
           sudo pip3 install j2cli
+          export NOSTRETCH=1 
+          export NOBUSTER=1 
+          export SONIC_CONFIG_BUILD_JOBS=4
+          export SONIC_CONFIG_USE_NATIVE_DOCKERD_FOR_BUILD=y
       - name: make init
         run: make init
       - name: make configure
-        run: NOSTRETCH=1 NOBULLSEYE=1 make configure PLATFORM=broadcom
-      - name: build debian buster required targets
-        run: BLDENV=buster make buster
+        run:  make configure PLATFORM=broadcom
       - name: build ONIE image
         run: make target/sonic-broadcom.bin
       - name: build EOS image
